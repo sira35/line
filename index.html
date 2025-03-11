@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line商品详情</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Line 产品详情</h1>
+        </header>
+        
+        <main>
+            <div class="product-container">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/400x300" alt="Line产品图片">
+                </div>
+                
+                <div class="product-details">
+                    <h2>Line</h2>
+                    <p class="product-description">高品质Line产品，为您提供极致体验。</p>
+                    
+                    <div class="product-info">
+                        <div class="info-item">
+                            <span class="label">价格:</span>
+                            <span class="value">¥35.00</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="label">库存:</span>
+                            <span class="value" id="stockCount">100</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <span class="label">数量:</span>
+                            <span>1</span>
+                            <span class="note">(每个密钥限购一件)</span>
+                        </div>
+                        
+                        <button id="buyButton" class="buy-button">立即购买</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 密钥验证弹窗 -->
+        <div id="keyModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3>密钥验证</h3>
+                <p>请输入您的密钥:</p>
+                <input type="number" id="keyInput">
+                <p id="keyError" class="error-message"></p>
+                <button id="verifyButton">验证</button>
+            </div>
+        </div>
+        
+        <!-- 购买成功弹窗 -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <h3>购买成功！</h3>
+                <p>您已成功购买了Line产品。</p>
+                <p>密钥已使用，库存已更新。</p>
+                <button id="successCloseButton">确定</button>
+            </div>
+        </div>
+        
+        <!-- 购买提示 -->
+        <div id="purchaseNotification" class="notification"></div>
+        
+        <footer>
+            <p>&copy; 2023 Line产品 版权所有</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
