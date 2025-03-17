@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Line 商品详情</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Line 商品详情</h1>
+  </header>
+  <main>
+    <div class="product-container">
+      <div class="product-image">
+        <img src="https://via.placeholder.com/300x200?text=Line 商品图片" alt="Line 商品图片">
+      </div>
+      <div class="product-details">
+        <h2>高端原装Line产品，为您提供最佳授权体验。</h2>
+        <p>价格: ¥<span id="price">35.00</span></p>
+        <p>库存: <span id="stock">100</span></p>
+        <p>数量: 1 (每个用户限购一个)</p>
+        <label for="key">密钥:</label>
+        <input type="text" id="key" placeholder="请输入密钥">
+        <button onclick="purchase()">立即购买</button>
+        <p id="message"></p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2023 Line产品 版权所有</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
