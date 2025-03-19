@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Line商品",
+      "price": 35,
+      "stock": 91
+    }
+  ],
+  "keys": {
+    "cfea6f33-ba94-4523-8936-8d5e9efdb607": {
+      "used": true,
+      "generatedAt": "2025-03-19T04:57:45.287Z",
+      "usedAt": "2025-03-19T04:57:52.837Z"
+    },
+    "1f2a46b8-5307-4a59-8ff8-7a29307f81ec": {
+      "used": true,
+      "generatedAt": "2025-03-19T05:04:21.555Z",
+      "usedAt": "2025-03-19T05:04:27.260Z"
+    },
+    "0a707e30-fdeb-4198-b122-952b69b0da63": {
+      "used": true,
+      "generatedAt": "2025-03-19T10:50:21.669Z",
+      "usedAt": "2025-03-19T10:50:29.666Z"
+    },
+    "2dd72cf1-e226-4310-88c7-2fdc9ea9cefb": {
+      "used": true,
+      "generatedAt": "2025-03-19T10:56:29.204Z",
+      "usedAt": "2025-03-19T10:56:34.735Z"
+    },
+    "2d9c8279-bc64-4f94-8a8a-392aa29f436e": {
+      "used": true,
+      "generatedAt": "2025-03-19T11:00:03.491Z",
+      "usedAt": "2025-03-19T11:02:43.015Z"
+    },
+    "b06a73c3-26cc-4bda-ab50-1aa953386574": {
+      "used": true,
+      "generatedAt": "2025-03-19T13:52:13.121Z",
+      "usedAt": "2025-03-19T13:52:19.784Z"
+    }
+  }
+}

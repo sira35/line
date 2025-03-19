@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Line 商品详情</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <header>
@@ -13,23 +13,66 @@
   <main>
     <div class="product-container">
       <div class="product-image">
-        <img src="https://via.placeholder.com/300x200?text=Line 商品图片" alt="Line 商品图片">
+        <img src="images/line-logo.jpg?v=2" alt="Line 商品图片" width="200px">
       </div>
       <div class="product-details">
         <h2>高端原装Line产品，为您提供最佳授权体验。</h2>
         <p>价格: ¥<span id="price">35.00</span></p>
         <p>库存: <span id="stock">100</span></p>
         <p>数量: 1 (每个用户限购一个)</p>
-        <label for="key">密钥:</label>
-        <input type="text" id="key" placeholder="请输入密钥">
-        <button onclick="purchase()">立即购买</button>
-        <p id="message"></p>
+        
+        <!-- 密钥管理区域 -->
+        <div class="key-management">
+          <button id="generateKeyButton" class="action-button">管理员生成密钥</button>
+          <div class="key-display-container">
+            <p>您的密钥: <span id="keyDisplay" class="key-display"></span></p>
+            <p class="key-info">请联系管理员获取密钥，每个密钥只能使用一次</p>
+          </div>
+          <button id="buyButton" class="action-button">立即购买</button>
+        </div>
+        
+        <p id="message" class="message"></p>
       </div>
+    </div>
+    
+    <!-- 商品列表区域 -->
+    <div class="items-section">
+      <h2>所有商品</h2>
+      <div id="itemsList" class="items-grid">
+        <!-- 商品将通过JavaScript动态加载 -->
+      </div>
+    </div>
+    
+    <!-- API状态检查 -->
+    <div class="api-status">
+      <h3>API状态检查</h3>
+      <button id="checkApiButton">检查API状态</button>
+      <p id="apiStatus"></p>
     </div>
   </main>
   <footer>
     <p>&copy; 2023 Line产品 版权所有</p>
   </footer>
-  <script src="script.js"></script>
+  
+  <!-- 添加版本号避免缓存 -->
+  <script src="script.js?v=2"></script>
+  <script>
+    // API状态检查
+    document.getElementById('checkApiButton').addEventListener('click', async () => {
+      try {
+        const timestamp = new Date().getTime();
+        const response = await fetch(`/api/items?v=${timestamp}`);
+        const data = await response.json();
+        
+        document.getElementById('apiStatus').textContent = 
+          `API状态正常，返回了${data.length}个商品`;
+        document.getElementById('apiStatus').style.color = 'green';
+      } catch (error) {
+        document.getElementById('apiStatus').textContent = 
+          `API状态异常: ${error.message}`;
+        document.getElementById('apiStatus').style.color = 'red';
+      }
+    });
+  </script>
 </body>
 </html>
