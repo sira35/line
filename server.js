@@ -19,11 +19,11 @@ app.get('/api/generate-key', async (req, res) => {
   try {
     const db = await connectToDatabase();
     const newKey = uuidv4();
-    await db.collection('keys').insertOne({ key: newKey, used: false });
-    res.json({ key: newKey });
+    await db.collection('keys').insertOne({ key: newKey, used: false, generatedAt: new Date() });
+    res.json({ success: true, key: newKey, message: '密钥生成成功' });
   } catch (err) {
     console.error('生成密钥失败:', err);
-    res.status(500).json({ message: '服务器错误' });
+    res.status(500).json({ success: false, message: '服务器错误' });
   }
 });
 
@@ -50,8 +50,8 @@ app.post('/api/purchase', async (req, res) => {
 
     // 更新库存和密钥状态
     await db.collection('items').updateOne({ id: 1 }, { $inc: { stock: -1 } });
-    await db.collection('keys').updateOne({ key }, { $set: { used: true } });
-    res.json({ message: '购买成功', stock: item.stock - 1 });
+    await db.collection('keys').updateOne({ key }, { $set: { used: true, usedAt: new Date() } });
+    res.json({ success: true, message: '购买成功', stock: item.stock - 1 });
   } catch (err) {
     console.error('购买失败:', err);
     res.status(500).json({ message: '服务器错误' });
@@ -66,6 +66,21 @@ app.get('/api/items', async (req, res) => {
     res.json(items);
   } catch (err) {
     console.error('获取商品失败:', err);
+    res.status(500).json({ message: '服务器错误' });
+  }
+});
+
+// 获取单个商品详细信息
+app.get('/api/product-info', async (req, res) => {
+  try {
+    const db = await connectToDatabase();
+    const item = await db.collection('items').findOne({ id: 1 });
+    if (!item) {
+      return res.status(404).json({ message: '商品不存在' });
+    }
+    res.json({ price: item.price, stock: item.stock });
+  } catch (err) {
+    console.error('获取商品详情失败:', err);
     res.status(500).json({ message: '服务器错误' });
   }
 });
